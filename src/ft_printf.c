@@ -6,7 +6,7 @@
 /*   By: muabdi <muabdi@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:22:39 by muabdi            #+#    #+#             */
-/*   Updated: 2024/04/22 22:04:54 by muabdi           ###   ########.fr       */
+/*   Updated: 2024/04/23 15:22:59 by muabdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,19 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		len;
+	int		ret;
 
 	len = 0;
 	va_start(args, format);
 	while (*format != '\0')
 	{
 		if (*format == '%')
-			len += ft_parse(*++format, args);
+			ret = ft_parse(*++format, args);
 		else
-			len += ft_putchar_fd(*format, 1);
+			ret = ft_putchar_fd(*format, 1);
+		if (ret == -1)
+			return (-1);
+		len += ret;
 		format++;
 	}
 	va_end(args);
