@@ -6,11 +6,11 @@
 /*   By: muabdi <muabdi@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:22:39 by muabdi            #+#    #+#             */
-/*   Updated: 2024/04/23 15:22:59 by muabdi           ###   ########.fr       */
+/*   Updated: 2024/04/23 15:37:12 by muabdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 static int	ft_parse(const char format, va_list args);
 

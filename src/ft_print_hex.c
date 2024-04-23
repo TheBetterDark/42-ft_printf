@@ -6,11 +6,11 @@
 /*   By: muabdi <muabdi@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:16:24 by muabdi            #+#    #+#             */
-/*   Updated: 2024/04/23 15:25:42 by muabdi           ###   ########.fr       */
+/*   Updated: 2024/04/23 15:36:56 by muabdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 static char	*ft_uppercase(char *str);
 

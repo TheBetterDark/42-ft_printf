@@ -6,11 +6,11 @@
 /*   By: muabdi <muabdi@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:16:21 by muabdi            #+#    #+#             */
-/*   Updated: 2024/04/22 17:30:02 by muabdi           ###   ########.fr       */
+/*   Updated: 2024/04/23 15:37:09 by muabdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_print_string(char *str)
 {
