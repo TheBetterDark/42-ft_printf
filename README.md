@@ -6,7 +6,7 @@ This project is a library that contains a function called `ft_printf` that mimic
 
 ## Usage
 
-To use this library, you need to compile the library using the Makefile. The Makefile will compile the library and create a static library called libft.a. You can then include this library in your future projects.
+To use this library, you need to compile the library using the Makefile. The Makefile will compile the library and create a static library called libftprintf.a. You can then include this library in your future projects.
 
 ## Makefile
 
