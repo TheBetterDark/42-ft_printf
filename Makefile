@@ -6,51 +6,67 @@
 #    By: muabdi <muabdi@student.42london.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 23:59:26 by muabdi            #+#    #+#              #
-#    Updated: 2024/04/19 16:38:40 by muabdi           ###   ########.fr        #
+#    Updated: 2024/05/25 19:07:05 by muabdi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-INCLUDE = ./include
-LIBFT = ./libft
+INCLUDES = ./includes
+LIBS = ./libs
+
+LIBFT = $(LIBS)/libft
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
-SRCDIR = ./src
-OBJDIR =./build
+INCLUDEFLAGS = -I$(INCLUDES) -I$(LIBFT)/includes
 
-SRCS = $(SRCDIR)/ft_printf.c $(SRCDIR)/ft_print_char.c \
-$(SRCDIR)/ft_print_string.c $(SRCDIR)/ft_print_pointer.c \
-$(SRCDIR)/ft_print_number.c $(SRCDIR)/ft_print_hex.c
+RED = \033[0;31m
+GREEN = \033[0;32m
+YELLOW = \033[0;33m
+NC = \033[0m
 
-OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+SRC_DIR = ./src
+OBJ_DIR =./bin
 
-all: $(OBJDIR) $(NAME)
+SRCS = $(SRC_DIR)/ft_printf.c $(SRC_DIR)/ft_print_char.c \
+$(SRC_DIR)/ft_print_string.c $(SRC_DIR)/ft_print_pointer.c \
+$(SRC_DIR)/ft_print_number.c $(SRC_DIR)/ft_print_hex.c
 
-$(OBJDIR):
-	@mkdir -p $(OBJDIR)
+OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	$(CC) $(CFLAGS) -I$(INCLUDE) -I$(LIBFT) -c $< -o $@
+all: $(NAME) $(OBJ_DIR)
 
-${NAME}: libft $(OBJS)
-	@ar -rcs $(NAME) $(OBJS)
+$(OBJ_DIR):
+	@echo "${YELLOW}Creating object directory $(OBJ_DIR)...${NC}"
+	@mkdir -p $(OBJ_DIR)
+	@echo "${GREEN}Object directory $(OBJ_DIR) created.${NC}"
+	
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) $(INCLUDEFLAGS) -c $< -o $@
 
-libft:
+${NAME}: $(OBJS)
 	@make -C $(LIBFT)
-	@cp $(LIBFT)/libft.a $(NAME)
+	@ar -rcs $(NAME) $(OBJS)
+	@echo "${GREEN}$(NAME) created.${NC}"
 
 clean:
 	@make clean -C $(LIBFT)
-	@rm -rf $(OBJDIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean:
 	@make fclean -C $(LIBFT)
-	@rm -rf $(OBJDIR)
+	@rm -rf $(OBJ_DIR)
 	@rm -f $(NAME)
+	@echo "${GREEN}$(NAME) cleaned.${NC}"
 
 re: fclean all
+
+libs:
+	@echo "${YELLOW}Updating submodules...${NC}"
+	@git submodule update --init --recursive --remote
+	@echo "${GREEN}Submodules updated.${NC}"
 
 .PHONY: all clean fclean re libft
