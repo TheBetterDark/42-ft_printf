@@ -4,17 +4,18 @@
 # Object files
 *.o
 
-# Executables files
+# Compiled files
 *.out
 *.exe
-
-# Libaries files
 *.a
 
 # Temp files
 *.swp
-
-# Environment files
+bin
 .vscode
 test
-build
+logs
+*.log
+
+# Environment files
+.env
