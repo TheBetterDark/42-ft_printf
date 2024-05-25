@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is a library that contains a function called `ft_printf` that mimics the behavior of the original `printf` function from the C standard library. The function is able to print strings, characters, integers, and hexadecimal numbers.
+This project is a library that contains a function called `ft_printf` that mimics the behavior of the original `printf` function from the C standard library. The function is able to print strings, characters, integers, and hexadecimal numbers. The function also supports flags, width, and precision.
 
 ## Usage
 
